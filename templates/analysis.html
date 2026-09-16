@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Performance Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../static/css/analysis.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="analysis-header">
+        <h2 class="analysis-title">Performance Analysis</h2>
+        <a href="{{ url_for('dashboard') }}">
+            <button class="dashboard-btn">Go to Dashboard</button>
+        </a>
+    </div>
+    <!-- <h2 class="analysis-header">Performance Analysis</h2>
+    <a href="{{ url_for('dashboard') }}">
+        <button class="dashboard-btn">Go to Dashboard</button>
+    </a> -->
+
+    <!-- SUMMARY CARDS -->
+    <div class="cards">
+        <div class="card">
+            <h3>Total Attempts</h3>
+            <p>Total Attempts: {{ stats.total_attempts if stats else 0 }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Average Score</h3>
+            <p>Average Score: {{ stats.avg_score or 0 }}%</p>
+        </div>
+
+        <div class="card">
+            <h3>Strong Subjects 💪</h3>
+            <p>
+                {% if strong_subjects %}
+                    {{ strong_subjects | join(', ') }}
+                {% else %}
+                    -
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Weak Subjects ⚠</h3>
+            <p>
+                {% if weak_subjects %}
+                    {{ weak_subjects | join(', ') }}
+                {% else %}
+                    -
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- AI INSIGHT -->
+    <div class="ai-box">
+        <h3>AI Notes for Weak Subject: {{ weak_subjects[0] if weak_subjects else '' }}</h3>
+        <p>{{ ai_content }}</p>
+    </div>
+    <!-- <div class="ai-box">
+        <h3>AI Performance Insight</h3>
+        {% if avg_score >= 70 %}
+            <p>You are performing very well overall. Keep pushing your limits!</p>
+        {% elif avg_score >= 40 %}
+            <p>Your performance is moderate. Focus more on weak subjects to improve.</p>
+        {% else %}
+            <p>Your overall performance needs improvement. Practice weak subjects regularly.</p>
+        {% endif %}
+    </div> -->
+
+    <!-- CHART -->
+    <div class="chart-box">
+        <div style="height:300px;">
+            <canvas id="subjectChart"></canvas>
+        </div>
+    </div>
+
+    <!-- SUBJECT TABLE -->
+    <h3>Subject-wise Breakdown</h3>
+    <table class="analysis-table">
+        <tr>
+            <th>Subject</th>
+            <th>Total</th>
+            <th>Correct</th>
+            <th>Accuracy %</th>
+        </tr>
+        {% for s in subjects %}
+        <tr>
+            <td>{{ s.subject }}</td>
+            <td>{{ s.total }}</td>
+            <td>{{ s.correct }}</td>
+            <td>{{ s.percentage }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- QUESTION BREAKDOWN -->
+    <h3>Question Breakdown</h3>
+    <div class="question-list">
+        {% for q in questions %}
+            <div class="question-item">
+                <div class="question-text">
+                    <strong>{{ q.subject }}</strong> — {{ q.question }}
+                </div>
+
+                {% if q.is_correct %}
+                    <span class="badge correct-badge">✔ Correct</span>
+                {% else %}
+                    <span class="badge wrong-badge">✖ Wrong</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div id="chart-data" data-subjects='{{ subjects | default([]) | tojson }}'></div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    
+        const dataElement = document.getElementById("chart-data");
+        const subjects = JSON.parse(dataElement.dataset.subjects);
+    
+        const labels = subjects.map(s => s.subject);
+        const scores = subjects.map(s => s.percentage);
+    
+        const ctx = document.getElementById("subjectChart");
+    
+        if (ctx) {
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Accuracy %",
+                        data: scores
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, max: 100 }
+                    }
+                }
+            });
+        }
+    
+    });
+    </script>
+
+<!-- <script>
+const subjects = JSON.parse('{{ subjects | tojson | safe }}');
+
+const labels = subjects.map(s => s.subject);
+const scores = subjects.map(s => s.percentage);
+
+new Chart(document.getElementById("subjectChart"), {
+    type: "bar",
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "Accuracy %",
+            data: scores
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+</script> -->
+
+</body>
+</html>

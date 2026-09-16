@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - AI-Learning</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">AI-Learning</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>
+
+<!-- SIGNUP FORM -->
+<section class="auth-section">
+    <div class="auth-container signup-container">
+        <h2>Create an Account</h2>
+        <form method="POST" action="/signup">
+            <div class="input-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="fullname" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="auth-btn">Sign Up</button>
+            <p class="redirect-text">Already have an account? <a href="/login">Login</a></p>
+        </form>
+    </div>
+</section>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>About AI-Learning</h3>
+            <p>"Personalized AI learning platform for mastering topics efficiently."</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 AI-Learning. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* quiz.css */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7f9;
+    color: #0f172a;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #1e293b;
+}
+
+.quiz-card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.quiz-card .question {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.options label {
+    display: block;
+    background: #e2e8f0;
+    margin: 5px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.options label:hover {
+    background: #cbd5e1;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.submit-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.submit-btn {
+    background: #0f172a;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+    background: #1e293b;
+}

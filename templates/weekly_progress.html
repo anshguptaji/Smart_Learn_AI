@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ month_name }} {{ year }} Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/weekly_progress.css') }}">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h1>{{ month_name }} {{ year }} Learning Report</h1>
+        <p>Your monthly activity & quiz performance overview</p>
+    </div>
+
+    <!-- TOP STATS CARDS -->
+    <div class="top-stats">
+
+        <div class="stat-card">
+            <h3>Active Days</h3>
+            <p class="big-number">{{ present_count }}</p>
+            <span class="small-text">Days you practiced this month</span>
+        </div>
+
+        <div class="stat-card">
+            <h3>Inactive Days</h3>
+            <p class="big-number">{{ inactive_count }}</p>
+            <span class="small-text">Days missed (till today)</span>
+        </div>
+
+        <div class="stat-card">
+            <h3>Monthly Quiz Attempts</h3>
+            <p class="big-number">{{ quiz_count }}</p>
+            <span class="small-text">Total quizzes solved this month</span>
+        </div>
+
+        <div class="stat-card">
+            <h3>Average Attempts</h3>
+            <p class="big-number">{{ avg_attempts_per_day }}</p>
+            <span class="small-text">Per active day</span>
+        </div>
+
+    </div>
+
+    <!-- MAIN SECTION -->
+    <div class="content-section">
+
+        <!-- LEFT SIDE CALENDAR -->
+        <div class="calendar-box">
+            <h2>Monthly Activity Calendar</h2>
+
+            <div class="calendar-grid">
+                {% for day in range(1, total_days + 1) %}
+                    {% if day in present_days %}
+                        <div class="day present">{{ day }}</div>
+                    {% else %}
+                        <div class="day inactive">{{ day }}</div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div><span class="legend-box present"></span> Practiced</div>
+                <div><span class="legend-box inactive"></span> No Activity</div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE ATTENDANCE -->
+        <div class="attendance-box">
+            <h2>Attendance Overview</h2>
+
+            <div class="circle-progress">
+                <svg width="200" height="200">
+                    <circle
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        class="bg-circle">
+                    </circle>
+            
+                    <circle
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        class="progress-circle"
+                        stroke-dasharray="{{ circumference }}"
+                        stroke-dashoffset="{{ dash_offset }}">
+                    </circle>
+                </svg>
+            
+                <div class="percentage">
+                    {{ attendance_percentage }}%
+                </div>
+            </div>
+
+            <p class="attendance-text">
+                You were active on <strong>{{ present_count }}</strong> out of
+                <strong>{{ total_days }}</strong> days this month.
+            </p>
+
+            <p class="total-attempts">
+                Overall Lifetime Quiz Attempts:
+                <strong>{{ total_attempts }}</strong>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

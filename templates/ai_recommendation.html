@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Assistant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --accent: #10b981;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html, body {
+    height: 100%;
+    overflow: auto; /* scroll allowed */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* change from center to flex-start */
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+    
+        /* Full-screen Card Container */
+        .container {
+    width: 100%;
+    min-height: 100vh; /* full screen at least */
+    background-color: var(--card-bg);
+    border-radius: 0;
+    box-shadow: var(--shadow);
+    padding: 40px;
+    border: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* hidden hata diya */
+}
+    
+        /* Decorative Top Bar */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+    
+        /* Header */
+        .header-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+        .subtitle { color: var(--text-muted); font-size: 15px; }
+    
+        /* Weak Subject Badge */
+        .weak-subject-container {
+            background-color: #fff1f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 14px 18px;
+            text-align: center;
+            margin: 10px 0 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    
+        /* AI Content Box - bigger */
+        .ai-content-wrapper {
+            flex: 1; /* fills remaining space */
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .ai-content-wrapper h3 {
+            font-size: 18px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        .ai-content {
+            background-color: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            flex: 1; /* take available height */
+            overflow-y: auto; /* scroll only inside */
+            line-height: 1.7;
+            font-size: 15px;
+            color: #374151;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .ai-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .ai-content::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 5px;
+        }
+    
+        /* Action Button */
+        .action-area {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .practice-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 420px;
+            padding: 16px 22px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 7px -2px rgba(79, 70, 229, 0.2);
+        }
+        .practice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 18px -3px rgba(79, 70, 229, 0.3);
+        }
+    
+        /* Mobile */
+        @media screen and (max-width: 600px) {
+            .container { padding: 20px; }
+            h2 { font-size: 24px; }
+            .weak-subject-container { font-size: 16px; padding: 12px; }
+            .ai-content { padding: 18px; font-size: 14px; }
+            .practice-btn { font-size: 15px; padding: 14px; max-width: 100%; }
+        }
+        .dashboard-btn-container {
+        position: absolute;  /* container ke relative ke respect me */
+        top: 50px;           /* header ke thoda neeche adjust kar lo */
+        left: 25px;          /* left side margin */
+        }
+
+        .dashboard-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--primary); /* normal solid color */
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* only background transition */
+}
+
+.dashboard-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--accent)); /* hover gradient */
+    color: white; /* text color remain white */
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <h2><i class="fa-solid fa-robot" style="color: var(--primary);"></i> AI Learning Assistant</h2>
+            <div class="dashboard-btn-container">
+                <a href="/dashboard">
+                    <button class="dashboard-btn">
+                        <i class="fa-solid fa-chart-line"></i> Go to Dashboard
+                    </button>
+                </a>
+            </div>
+            <p class="subtitle">Personalized feedback based on your recent performance</p>
+        </div>
+
+        <div class="weak-subject-container">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span class="weak-subject">{{ weak_subject }}</span>
+        </div>
+
+        <div class="ai-content-wrapper">
+            <h3><i class="fa-solid fa-sparkles"></i> AI Explanation</h3>
+            <div class="ai-content">
+                <pre>{{ ai_content }}</pre>
+            </div>
+        </div>
+
+        <div class="action-area">
+            <a href="/practice">
+                <button class="practice-btn">
+                    <i class="fa-solid fa-pen-to-square"></i> Practice Quiz on This Topic
+                </button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Class & Subject - AI-Learning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/select.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">AI-Learning</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- SELECT FORM SECTION -->
+<section class="select-section">
+    <div class="select-container">
+        <h2>Select Your Class</h2>
+
+        <form method="POST">
+            <div class="input-group">
+                <label for="class">Select Class:</label>
+                <select name="class" id="class" required>
+                    <option value="">-- Choose Class --</option>
+                    <option value="6">Class 6</option>
+                    <option value="7">Class 7</option>
+                    <option value="8">Class 8</option>
+                </select>
+            </div>
+
+            <!-- <div class="input-group">
+                <label for="subject">Select Subject:</label>
+                <select name="subject" id="subject" required>
+                    <option value="">-- Choose Subject --</option>
+                    <option value="English">English</option>
+                    <option value="Science">Science</option>
+                    <option value="Maths">Maths</option>
+                    <option value="History">History</option>
+                </select>
+            </div> -->
+
+            <button type="submit" class="select-btn">Continue</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>About AI-Learning</h3>
+            <p>Personalized AI learning platform for mastering topics efficiently.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 AI-Learning. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

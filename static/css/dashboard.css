@@ -1,0 +1,205 @@
+/* DashBoard Styling */
+/* ---------- DASHBOARD ---------- */
+/* ---------- DASHBOARD ---------- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f0ff;  /* Home page color */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* <-- disables page scroll */
+    height: 100vh;    /* full viewport height */
+}
+.dashboard {
+    padding: 30px;
+    height: 100%;       /* full height of body */
+    overflow: hidden;   /* ensures inner content doesn't scroll */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3b3f5c;
+    color: #fff;
+    padding: 15px 30px;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navbar a.logout-btn {
+    background-color: #ff4c4c;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dashboard {
+    padding: 30px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* --- Cards --- */
+.dashboard-info, .dashboard-actions, .dashboard-progress, .dashboard-history {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: #000; /* Black text for clarity */
+}
+
+.dashboard-info h2,
+.dashboard-actions h2,
+.dashboard-progress h2,
+.dashboard-history h2 {
+    margin-top: 0;
+    color: #3b3f5c;
+    font-size: 1.3rem;
+}
+
+.dashboard-info p,
+.dashboard-actions p,
+.dashboard-progress p,
+.dashboard-history p,
+.dashboard-history li {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #000;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6366f1;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #4f46e5;
+}
+
+/* --- Dashboard History --- */
+.dashboard-history {
+    grid-column: 1 / -1;  /* full width below profile */
+    margin-top: 20px;
+    padding: 25px;
+}
+
+.dashboard-history ul {
+    padding-left: 20px;
+}
+
+/* --- Inline Subject Change Form --- */
+#change-subject-form {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+#change-subject-form select {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+#change-subject-form button {
+    flex: 0 0 120px; /* button width */
+    padding: 8px;
+    font-size: 0.95rem;
+}
+
+/* --- Actions & Progress Cards in single row --- */
+.dashboard-actions, .dashboard-progress {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Optional: Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dashboard history full width */
+/* Dashboard history improved */
+.dashboard-history {
+    grid-column: 1 / -1;      /* full width */
+    margin-top: 30px;          /* space from top row */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px 20px;        /* more padding for readability */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: #000;               /* text black */
+}
+
+.dashboard-history h2 {
+    margin-top: 0;
+    color: #3b3f5c;
+    font-size: 1.4rem;
+}
+
+.dashboard-history h3 {
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.dashboard-history p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.dashboard-history ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.dashboard-history ul li {
+    font-size: 0.95rem;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+/* Home Button like Logout button but theme color */
+.navbar a.home-btn {
+    background-color: #4f46e5;  /* primary blue/purple */
+    padding: 5px 12px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.navbar a.home-btn:hover {
+    background-color: #6366f1; /* hover slightly lighter/darker */
+}

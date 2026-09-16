@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartLearn AI - Personalized Learning</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<script defer src="../static/js/script.js"></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo" id="Home">SmartLearn AI</div>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <!-- <li><a href="#how">How It Works</a></li> -->
+        <li><a href="#about">About</a></li>
+        <li><a href="#Contact">Contact</a></li>
+    </ul>
+    <a href="/login" class="btn">Get Started</a>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <h1 id="typed-text"></h1>
+        <p class="hero-subtext">Focus only on what matters. Learn efficiently with AI guidance.</p>
+        <a href="/login" class="btn hero-btn">Start Learning</a>
+    </div>
+    <div class="hero-shapes">
+        <span class="shape shape1"></span>
+        <span class="shape shape2"></span>
+        <span class="shape shape3"></span>
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features" id="features">
+    <h2>Why Choose Us</h2>
+    <div class="feature-cards">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="icon">🎯</div>
+            <h3>Personalized Learning</h3>
+            <p>AI adapts content to your level, making learning fast and effective.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Weak Topic Focus</h3>
+            <p>Extra resources and repeated MCQs ensure mastery of difficult areas.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="icon">🧠</div>
+            <h3>Smart Assessments</h3>
+            <p>Mixed MCQs of strong & weak topics provide complete understanding.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS SECTION -->
+<section class="how-it-works" id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <!-- Step 1 -->
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="icon">📝</div>
+            <h3>Signup & Select</h3>
+            <p>Student signs up and selects class & subjects.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="icon">🤖</div>
+            <h3>AI Assessment</h3>
+            <p>AI checks existing knowledge and identifies weak topics.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="icon">📚</div>
+            <h3>Personalized Learning</h3>
+            <p>Student receives targeted content and mixed MCQs for mastery.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="icon">🏆</div>
+            <h3>Progress & Feedback</h3>
+            <p>AI analyzes answers, confirms understanding, and provides feedback.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+    <h2>About</h2>
+    <div class="about-content">
+        <p>"AI-Learning is a smart personalized platform designed to adapt to each student’s unique learning pace. It first assesses the student’s existing knowledge across subjects, identifies weak topics, and then provides interactive content tailored to their needs. By combining personalized lessons with mixed MCQs, AI ensures mastery in both strong and weak areas, making learning efficient, engaging, and fun."</p>
+
+        <p>"Our system focuses on intelligent repetition, offering additional exercises and targeted feedback for weak topics, while skipping unnecessary content for strong areas. This ensures students spend their time effectively, focusing only on what they need to improve. The platform delivers a seamless learning experience that is beginner-friendly yet advanced enough to challenge and guide learners towards academic excellence."</p>
+    </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-container">
+        <!-- About -->
+        <div class="footer-about">
+            <h3>About AI-Learning</h3>
+            <p>"AI-Learning is a smart personalized platform delivering interactive content and AI-driven <br> assessments to students master topics efficiently."</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#Home">Get Start</a></li>
+                <li><a href="#features">Why Choose Us</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-contact">
+            <div class="team-wrapper" id="Contact">
+                <h3>Connect with our team</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/anshgupta26" target="_blank">
+                        <img src="../static/images/id1.png" class="img-icon" width="24" height="24" alt="Student 1">
+                    </a>
+                    <a href="https://www.linkedin.com/in/aryan-sahu-96160a277" target="_blank">
+                        <img src="../static/images/id1.png" width="24" height="24" alt="Student 2">
+                    </a>
+                    <a href="https://www.linkedin.com/in/deepak-savita-62a2a0362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                     target="_blank">
+                        <img src="../static/images/id1.png" width="24" height="24" alt="Student 3">
+                    </a>
+                    <a href="https://www.linkedin.com/in/hemal-gaur-980270300?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                     target="_blank">
+                        <img src="../static/images/id1.png" width="24" height="24" alt="Student 4">
+                    </a>
+                </div>
+            </div>
+        </div>
+    <div class="footer-bottom">
+        <p>© 2026 SmartLearn AI. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

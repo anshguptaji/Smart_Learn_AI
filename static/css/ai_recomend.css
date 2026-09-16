@@ -1,0 +1,117 @@
+/* Reset & font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Main container */
+.container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    background-color: #f3f6f9;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #34495e;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Weak subject highlight */
+.weak-subject {
+    color: #e74c3c;  /* red-ish for highlight */
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* AI content box */
+.ai-content {
+    background-color: #ffffff;
+    border: 1px solid #d1d8e0;
+    padding: 20px 25px;
+    border-radius: 10px;
+    max-height: 450px;
+    overflow-y: auto;
+    line-height: 1.8;
+    white-space: pre-wrap; /* preserve line breaks */
+    font-size: 16px;
+    color: #2d3436;
+}
+
+/* Each bullet / line spacing inside AI content */
+.ai-content p {
+    margin-bottom: 12px;
+}
+
+/* Scrollbar styling */
+.ai-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.ai-content::-webkit-scrollbar-track {
+    background: #ecf0f1;
+    border-radius: 10px;
+}
+
+.ai-content::-webkit-scrollbar-thumb {
+    background-color: #95a5a6;
+    border-radius: 10px;
+}
+
+/* Button */
+.practice-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+}
+
+.practice-btn:hover {
+    background-color: #1f618d;
+}
+
+/* Responsive tweaks for smaller screens */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .weak-subject {
+        font-size: 20px;
+    }
+
+    .ai-content {
+        font-size: 15px;
+        max-height: 350px;
+    }
+
+    .practice-btn {
+        font-size: 16px;
+    }
+}

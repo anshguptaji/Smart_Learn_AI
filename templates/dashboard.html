@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - AI Learning</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">AI-Learning</div>
+    <ul>
+        <li>Welcome, <strong>{{ full_name }}</strong></li>
+        <li>Username: <strong>{{ username }}</strong></li>
+        <li><a href="/logout" class="logout-btn">Logout</a></li>
+        <li><a href="/" class="home-btn">Home</a></li>
+    </ul>
+</nav>
+
+
+
+<!-- DASHBOARD MAIN -->
+<section class="dashboard">
+    <!-- Top Row -->
+    <div class="dashboard-container top-row">
+        <!-- Profile Card -->
+         <!-- Dashboard Profile Card -->
+<div class="dashboard-info">
+    <h2>Your Profile</h2>
+    <p><strong>Class:</strong> {{ selected_class }}</p>
+    <p><strong>Subjects:</strong>
+        {% for sub in subjects %}
+            <span class="subject-name">{{ sub }}</span>
+        {% endfor %}
+    </p>
+    <!-- <p><strong>Total Profile Changes:</strong> {{ profile_changes }}</p> -->
+    
+</div>
+<!-- Actions Card -->
+<div class="dashboard-actions">
+    <h2>Actions</h2>
+    <button class="btn" onclick="window.location.href='/practice'">Take Quiz</button>
+    <button class="btn" onclick="window.location.href='/weekly_progress'">View Weekly Progress</button>
+    <button class="btn" onclick="window.location.href='/analysis'">View Analysis</button>
+    <button class="btn" onclick="window.location.href='/ai_recommendation'">AI Recommendations</button>
+</div>
+
+        <!-- Progress Card -->
+        <div class="dashboard-progress">
+            <h2>Weekly Practice</h2>
+            <p>Sessions completed this week: <strong>{{ weekly_sessions }}</strong></p>
+            <p>Average Score: <strong>{{ avg_score }}%</strong></p>
+            <p>Most Practiced Subject: <strong>{{ most_practiced }}</strong></p>
+            <div class="weekly-analysis">
+
+                <div class="analysis-box">
+                    <h4>🔥 Strong Subject</h4>
+                    <p>{{ strong_subject }}</p>
+                </div>
+            
+                <div class="analysis-box">
+                    <h4>⚠ Weak Subject</h4>
+                    <p>{{ weak_subject }}</p>
+                </div>
+            
+            </div>
+            <canvas id="weeklyChart" style="margin-top:20px;"></canvas>
+        </div>
+    </div>
+    <form action="{{ url_for('delete_account') }}" method="POST" onsubmit="return confirm('Are you sure? All your data will be permanently deleted!');">
+        <button type="submit" class="btn btn-danger">Delete Account Permanently</button>
+    </form>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const chartLabels = JSON.parse('{{ dates | tojson | safe }}');
+const chartData = JSON.parse('{{ scores | tojson | safe }}');
+
+const ctx = document.getElementById('weeklyChart');
+
+if (ctx && chartLabels.length > 0) {
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                label: 'Score',
+                data: chartData,
+                backgroundColor: '#4e73df',  // simple blue
+                borderRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false   // simple look
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
+</script>
+</body>
+</html>

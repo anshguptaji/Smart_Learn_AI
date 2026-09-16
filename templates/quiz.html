@@ -1,0 +1,72 @@
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Quiz - {{ subject }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Practice Quiz - {{ subject }}</h1>
+        </header>
+
+        <form method="POST" action="/submit_quiz">
+
+            <!-- ✅ SUBJECT SEND KARO -->
+            <input type="hidden" name="subject" value="{{ subject }}">
+        
+            {% for q in questions %}
+    <div class="card quiz-card">
+
+    <p class="question">
+        <b>Q{{ loop.index }}:</b> {{ q.question }}
+    </p>
+
+    <!-- ✅ SEND QUESTION ID ONLY -->
+    <input type="hidden" 
+           name="question_id{{ loop.index0 }}" 
+           value="{{ q.id }}">
+
+    <div class="options">
+        <label>
+            <input type="radio" name="q{{ loop.index0 }}" 
+                   value="{{ q.option1 }}" required>
+            {{ q.option1 }}
+        </label>
+
+        <label>
+            <input type="radio" name="q{{ loop.index0 }}" 
+                   value="{{ q.option2 }}">
+            {{ q.option2 }}
+        </label>
+
+        <label>
+            <input type="radio" name="q{{ loop.index0 }}" 
+                   value="{{ q.option3 }}">
+            {{ q.option3 }}
+        </label>
+
+        <label>
+            <input type="radio" name="q{{ loop.index0 }}" 
+                   value="{{ q.option4 }}">
+            {{ q.option4 }}
+        </label>
+    </div>
+
+</div>
+{% endfor %}
+        
+            <!-- ✅ TOTAL QUESTIONS -->
+            <input type="hidden" name="total_questions" value="{{ questions|length }}">
+        
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Submit Quiz</button>
+            </div>
+        
+        </form>
+    </div>
+</body>
+</html>
